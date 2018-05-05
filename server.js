@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/static"));
-app.use(session({secret: 'codingdojorocks'}));
+app.use(session({secret: 'imasecret'}));
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
         req.session.counter = 1;
     }
     else{
-        req.session.counter++;
+        req.session.counter+= 2;
     }
     console.log(req.session.counter);
     res.render("index", {counter: req.session.counter});
